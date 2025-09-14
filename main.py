@@ -1,10 +1,12 @@
 from stats import *
 
-# file_path = "/home/presleyc95/workspace/github.com/presleyc95/bookbot/books/frankenstein.txt"
+import sys
+
+num_args = len(sys.argv)
 
 
 def main():
-    book_path = "books/frankenstein.txt"
+    book_path = sys.argv[1]
     text = get_book_text(book_path)
     num_words = get_num_words(text)
     num_letters = get_chars_dict(text)
@@ -25,4 +27,8 @@ def get_book_text(filepath):
         return f.read()
 
 
-main()
+if num_args < 2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
+else:
+    main()
